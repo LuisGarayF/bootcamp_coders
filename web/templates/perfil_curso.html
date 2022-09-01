@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block 'content' %}
+    <div class="container-fluid">
+        <div class="row bg-info mb-4">
+            <div class="col mb-4">
+                <h1 class="text-center text-white fs-2"> Perfil Curso </h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+                {% for cod in cods %}
+                <div class="col">
+                  <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Codigo Curso</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="codigo_curso" value="{{ cod.codigo_curso }}">
+                    </div>
+                  </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Curso</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="descripcion" value="{{ cod.nombre_curso }}">
+                    </div>
+                  </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Fecha Inicio</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="fecha_inicio" value="{{ cod.fecha_inicio }}">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Fecha Termino</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="fecha_termno" value="{{ cod.fecha_termno }}">
+                    </div>
+                  </div>
+                  <hr>
+                {% endfor %}
+                <a href="{% url 'home'%}" class="btn btn-info text-white text-center mx-auto p-1 fs-5" style="width:100px;"> Volver </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

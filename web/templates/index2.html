@@ -1,0 +1,67 @@
+{%extends 'base.html'%}
+{% block 'content' %}
+{% load static %}
+<div class="container-fluid-sm">
+    <div class="row bg-info mb-4">
+        <div class="col mb-4">
+            <h1 class="text-center text-white fs-2 ">Dashboard Administración Alumnos </h1>        
+        </div>
+    </div>
+</div>
+<div class="container">    
+    <div class="row text-center">
+        <div col>
+            <form method="POST" class="form-group">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="div-field p-2">
+                    <label class="form-label my-2">{{ field.label }}</label>
+                    {{ field }}
+                </div>
+                {% endfor %}
+
+                <div class="col my-auto">
+                    <button class="btn btn-info text-white text-center mx-auto p-1 fs-5" type="submit" style="width:100px;"> Filtrar </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class ="col p-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-info">RUT</th>
+                        <th scope="col" class="text-info">Nombre</th>
+                        <th scope="col" class="text-info">Apellido Paterno</th>
+                        <th scope="col" class="text-info">Apellido Materno</th>
+                        <th scope="col" class="text-info text-center">Código Curso</th>
+                        <th scope="col" class="text-info">Descripción Curso</th>
+                        <th scope="col" class="text-info">  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for estudiante in estudiantes %}
+                    <tr>
+                        <th scope="row">{{estudiante.rut}}</th>
+                        <td>{{estudiante.nombre}}</td>
+                        <td>{{estudiante.apellido_pat}}</td>
+                        <td>{{estudiante.apellido_mat}}</td>
+                        <td class="text-center">{{estudiante.codigo_curso}}</td>
+                        <td>{{estudiante.descripcion}}</td>
+                        <td>
+                            <form action={% url 'perfil_curso'%} method="POST" >
+                                {% csrf_token %}
+                                <button type='submit' name="codigo_curso" value="{{estudiante.codigo_curso}}" class="btn btn-info text-white text-center mx-auto my-auto" style="width:100px;"> Ver </button>
+                                <!--<button class="btn btn-primary" type="submit" value="{{ estudiante.codigo_curso.codigo_curso }}" name="curso">Ver</button>-->
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+    </div>
+</div>    
+{% endblock %}
