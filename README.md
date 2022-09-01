@@ -10,3 +10,7 @@
 Una vista previa del Dashboard:
 
 ![image](https://user-images.githubusercontent.com/55920809/187960164-19f9ce30-0d62-47ab-a0f2-2a6c41d3b9c6.png)
+
+Vista previa de perfil curso:
+
+![image](https://user-images.githubusercontent.com/55920809/187964423-170bf8a8-2d60-471e-8eb6-ed53d9d8f677.png)
